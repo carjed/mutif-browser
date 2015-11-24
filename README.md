@@ -18,6 +18,23 @@ The left panel displays the following:
 * Download buttons.
 
 ## Usage Instructions
+
+A web interface for the mutif browser is available at *URL goes here*
+
+To run the app on your own system, run the following command from an R session:
+`runGitHub("mutif-browser", "carjed")`
+
+Note that the mutif browser requires the following packages:
+
+* `library(shiny)`
+* `library(shinyBS) # Used for collapsible sections`
+* `library(Cairo)   # For nicer ggplot2 output when deployed on Linux`
+* `library(DT)      # Pretty tables`
+* `library(ggplot2) # Pretty plots`
+* `library(RColorBrewer)`
+
+If you have the `dev_tools` package installed, you can quickly install and load the required packages with  `source_gist("https://gist.github.com/carjed/1839dd68e43eda0e4c06")`
+
 ### Selecting Motifs
 To select a set of k-mers corresponding to a given motif, check the box for the base(s) of interest at each position upstream/downstream from the mutation site. This will mark the corresponding cells of the heatmap and add the data to the Selection Table.
 
