@@ -1,7 +1,11 @@
 # mutif-browser
 
 ## Overview
-The Sequence Motif Mutation Browser is a tool used for finding and comparing genome-wide relative mutation rates between different k-mers in the human genome.
+The Sequence Motif Mutation Browser is a tool used for finding and comparing genome-wide relative mutation rates of k-mers in the human genome. It is built on the R statistical computing environment using [Shiny](http://shiny.rstudio.com/).
+
+If you use mutif in your research, please cite the following paper:
+
+*citation goes here*
 
 To select a mutation category to examine, choose from the Category dropdown menu.
 
