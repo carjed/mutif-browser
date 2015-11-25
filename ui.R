@@ -1,16 +1,20 @@
+
 library(shiny)
+library(shinyBS)
 library(ggplot2)
 library(Cairo)   # For nicer ggplot2 output when deployed on Linux
 library(DT)
+library(RColorBrewer)
 
 shinyUI(fluidPage(
   fluidRow(
     column(12,
            h1('Sequence Motif Mutation Browser'),
+           tags$a(href="http://github.com/carjed/mutif-browser", "Instructions and Documentation"),
            fluidRow(
              column(6,
                     fluidRow(
-                      column(3,
+                      column(6,
                              selectInput("category", "Select Category:",
                                          c("AT_CG" = "AT_CG",
                                            "AT_GC" = "AT_GC",
@@ -76,12 +80,10 @@ shinyUI(fluidPage(
                            ),
                           
                            fluidRow(
-                            column(4,
+                            column(6,
                                    downloadButton('downloadSubData', 'Download Selected Data')),
-                            column(4,
-                                   downloadButton('downloadData', 'Download Full Data')),
-                            column(4,
-                                   h4("<link to usage instructions>"))
+                            column(6,
+                                   downloadButton('downloadData', 'Download Full Data'))
                            )
                     )
                   )  
