@@ -58,6 +58,7 @@ To download data for your selected motifs, simply click the "Download Selected D
 * When switching between categories, plot briefly shows a blank panel. This only occurs if rows from the table are selected--seems to be due to incorrect clearing of data when reactive dropdown for category selection is changed
 * Mouse clicks sometimes fail to select a cell, especially near borders.
 * Hovering sometimes returns garbled info for multiple cells
+* in narrow windows, the data tables are outside of the frame
 
 ### Features under development:
 * Dynamically updated stats summary for selected motifs
