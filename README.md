@@ -19,7 +19,9 @@ The left panel displays the following:
 
 ## Usage Instructions
 
-A web interface for the mutif browser is available at *URL goes here*
+Most users will want to use the web interface, available at *https://carjed.shinyapps.io/mutif-browser*
+
+This will hopefully be hosted on a dedicated server in the future.
 
 To run the app on your own system, run the following command from an R session:
 `runGitHub("mutif-browser", "carjed")`
