@@ -1,6 +1,4 @@
-# mutif-browser
-
-## Overview
+# Overview
 Point mutation rates in the human genome are highly variable. A substantial portion of this variability is attributable to the sequence of bases surrounding the site of the mutation. We have estimated these motif-specific mutation rates, considering all combinations of bases up to 3 positions upstream and downstream from a mutation site.
 
 This utility was designed to explore and compare these 24,576 unique 7-mer mutation rates. It is built on the R statistical computing environment using [Shiny](http://shiny.rstudio.com/).
