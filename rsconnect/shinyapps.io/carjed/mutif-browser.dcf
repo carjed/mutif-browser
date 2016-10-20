@@ -1,8 +1,8 @@
 name: mutif-browser
 account: carjed
 server: shinyapps.io
-bundleId: 318584
+bundleId: 318586
 url: https://carjed.shinyapps.io/mutif-browser
-when: 1448413788.88974
+when: 1448414410.26169
 asMultiple: FALSE
 asStatic: FALSE

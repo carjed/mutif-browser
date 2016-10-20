@@ -1,27 +1,16 @@
 # mutif-browser
 
 ## Overview
-The Sequence Motif Mutation Browser is a tool used for finding and comparing genome-wide relative mutation rates of k-mers in the human genome. It is built on the R statistical computing environment using [Shiny](http://shiny.rstudio.com/).
+Point mutation rates in the human genome are highly variable. A substantial portion of this variability is attributable to the sequence of bases surrounding the site of the mutation. We have estimated these motif-specific mutation rates, considering all combinations of bases up to 3 positions upstream and downstream from a mutation site.
 
-If you use mutif in your research, please cite the following paper:
+This utility was designed to explore and compare these 24,576 unique 7-mer mutation rates. It is built on the R statistical computing environment using [Shiny](http://shiny.rstudio.com/).
 
-*citation goes here*
+<!-- If you use mutif in your research, please cite the following paper:
 
-To select a mutation category to examine, choose from the Category dropdown menu.
+*citation goes here* -->
 
-The data for each category is organized visually into a heatmap of 4,096 unique 7-base pair motifs.  To assist in locating a specific motif, a gray frame is drawn around each set of 256 motifs that share the same bases in the +/-1 position from the mutation site. For each cell (or group of cells), the base at the +1, +2, and +3 position are given on the bottom, middle, and top level of the x-axis labels, respectively.  Similarly, the bases at the -1, -2, and -3 positions are shown in the corresponding levels of the y-axis label.
- 
-The left panel displays the following:
-* Widgets to select and search for a specific motif or group of motifs.
-* A filtered table of the motifs that have been selected.
-* Summary statistics for the selected motifs [under development]
-* Download buttons.
-
-## Usage Instructions
-
-Most users will want to use the web interface, available at *https://carjed.shinyapps.io/mutif-browser*
-
-This will hopefully be hosted on a dedicated server in the future.
+### Accessing this utility
+Most users will want to use the web interface, available at *http://www.jedidiahcarlson.com/shiny/mutif-browser/*
 
 To run the app on your own system, run the following command from an R session:
 `runGitHub("mutif-browser", "carjed")`
@@ -34,25 +23,26 @@ Note that the mutif browser requires the following packages:
 * `library(DT)      # Pretty tables`
 * `library(ggplot2) # Pretty plots`
 * `library(RColorBrewer)`
+* `library(dplyr)`
 
 If you have the `dev_tools` package installed, you can quickly install and load the required packages with  `source_gist("https://gist.github.com/carjed/1839dd68e43eda0e4c06")`
 
-### Selecting Motifs
-To select a set of k-mers corresponding to a given motif, check the box for the base(s) of interest at each position upstream/downstream from the mutation site. This will mark the corresponding cells of the heatmap and add the data to the Selection Table.
+### Usage Instructions
+To start, choose the single-base mutation type you wish to examine from the "Select Type" dropdown menu on the left.
 
-The motif corresponding to your selection is displayed to the right of the checkbox grid. If this motif is degenerate, ambiguous bases are represented in standard IUPAC codes [under development].
+This will display a heatmap of the 4,096 unique 7-mer mutation rate estimates corresponding to the selected type. These 7-mer subtypes are organized according to the 3 positions upstream (x-axis) and 3 positions downstream (y-axis) from the site of a mutation. Subtypes sharing the same +1/-1 base are grouped together in a large box (256 subtypes each), and subtypes sharing the same +1/-1 and +2/-2 base are grouped together in smaller boxes (16 subtypes each).
 
-Additionally, you can select motifs of interest either by clicking on a cell of the heatmap or selecting a row from the table.  Both of these will also mark the cell on the heatmap and add to the Selection Table.  Hovering over a cell in the heatmap will display the motif and relative rate below the plot.
+### Selecting subtypes of interest
+Hovering over a cell in the heatmap will display a text field under the heatmap indicating the 7-mer motif and mutation rate information. Clicking a cell will highlight it on the heatmap.
 
-### Selection Summary
-When motifs have been added to the Selection Table, the following statistics are automatically calculated among the selected subset:
-* Relative mutation rate (selected motifs)
-* Fold-difference over background rate for the category
-* Min, Median, Max
-* Chi-squared test for uniformity
+On the sidebar is a grid of checkboxes corresponding to the 4 possible nucleotides at each position +/-3 bases away from the mutation site. Selecting one or more of these checkboxes will highlight the corresponding 7-mers on the heatmap.
+
+Below the heatmap, you will find a searchable table of the 4,096 7-mer relative mutation rates for the selected type. Clicking on a row will highlight the corresponding 7-mer in the heatmap.
+
+Below this table is another table containing all motifs that have been selected from clicking on the heatmap, selecting from the table, and/or selecting from the checkbox grid. Changing to another mutation type clears all selected subtypes from this list.
 
 ### Downloading Data
-To download data for your selected motifs, simply click the "Download Selected Data" button.  Alternatively, you can download data for all 25476 motifs across all 6 categories by clicking the "Download Full Data" button.
+To download data for your selected motifs, simply click the "Download Selected Data" button.  Alternatively, you can download data for all 24,576 subtypes by clicking the "Download Full Data" button.
 
 ----
 ### Known bugs/quirks/limitations:
@@ -63,9 +53,22 @@ To download data for your selected motifs, simply click the "Download Selected D
 * in narrow windows, the data tables are outside of the frame
 
 ### Features under development:
-* Dynamically updated stats summary for selected motifs
+
+New features are under active development!
+
+#### Selection Summary
+Include summary statistics for the mutation rates of selected subytpes:
+* Min, Mean, Median, Max, etc.
+* Fold-difference over background rate for the category
+* Chi-squared test for uniformity
+
+This will dynamically update as the selected subtypes change
+
+#### Display improvements
 * Select across different categories
 * Brush to select group of cells
-* Display motif with IUPAC codes next to selection boxes
-* Create option to show heatmap for 5bp/3bp motifs
-
+* Display motif with IUPAC ambiguity codes next to selection boxes
+* Filter and highlight subtypes by range of rates
+* Create option to show heatmap for lower-resolution 5-mer or 3-mer subtypes
+* Additional tab showing exploratory plots for selected data
+* Integration with the [Mr. Eel](www.jedidiahcarlson.com/mr-eel/) utility
